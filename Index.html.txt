@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Old Antiques & Vintage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e8e8e1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .announcement-bar {
+            background: #1c1b1b;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .announcement-bar a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1c1b1b;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #8b7355;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333333;
+            transition: color 0.3s;
+        }
+
+        .nav-icons button:hover {
+            color: #8b7355;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://everythingold.ca/cdn/shop/files/home-hero-1_1400x.jpg?v=1629918299');
+            background-size: cover;
+            background-position: center;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 45px;
+            background: #1c1b1b;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* New Arrivals */
+        .new-arrivals {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: #1c1b1b;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .view-all-link {
+            color: #8b7355;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .view-all-link:hover {
+            color: #6d5a44;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            border: 1px solid #e8e8e1;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            border-color: #d0c8b8;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-vendor {
+            font-size: 11px;
+            color: #999999;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #333333;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #1c1b1b;
+            font-weight: 600;
+        }
+
+        /* Banner Section */
+        .banner-section {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://everythingold.ca/cdn/shop/files/leaf-bg_1800x.jpg?v=1629917328');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            margin: 60px 0;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .banner-content p {
+            font-size: 20px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+
+        /* Featured Promo */
+        .featured-promo {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .promo-card {
+            position: relative;
+            height: 500px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: scale(1.02);
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .promo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px;
+            color: white;
+        }
+
+        .promo-overlay h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .promo-overlay p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Featured Categories */
+        .categories {
+            background: #f9f8f6;
+            padding: 80px 40px;
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            border: 1px solid #e8e8e1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-name {
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: #f9f8f6;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+
+        .info-card h3 {
+            font-size: 24px;
+            color: #1c1b1b;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .info-card p {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1c1b1b;
+            color: #cccccc;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: #8b7355;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333333;
+            color: #999999;
+            font-size: 13px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #333333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #8b7355;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .product-grid,
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        <a href="#">We Ship Worldwide!</a>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">Everything Old Antiques & Vintage</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#request">Item Request</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button>🔍</button>
+                <button>👤</button>
+                <button>🛒 0</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Antique, Vintage, and Locally Sourced Artisan Goods</h1>
+            <p>With 60,000+ antique & vintage goods at our museum shop, you're bound to find something to fall in love with!</p>
+            <a href="#shop" class="btn">Shop All</a>
+        </div>
+    </section>
+
+    <section class="new-arrivals">
+        <div class="section-header">
+            <h2>Holy Peanuts! New Arrivals!</h2>
+            <a href="#" class="view-all-link">View all</a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/1f09342142931ed29e3c85e2c1a33337_400x.jpg?v=1766517954')"></div>
+                <div class="product-info">
+                    <div class="product-vendor">Everything Old Antiques & Vintage</div>
+                    <div class="product-title">WWII German Mauser P08 Luger : 9mm Luger</div>
+                    <div class="product-price">$3,950.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/88c00d678c695ccd5b6ff95fcdc4c1be_400x.jpg?v=1766450596')"></div>
+                <div class="product-info">
+                    <div class="product-vendor">Everything Old Antiques & Vintage</div>
+                    <div class="product-title">WWI German P-08 Luger Semi-Auto Police Pistol : 9mm</div>
+                    <div class="product-price">$4,750.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/7a72164f78753d6dd48391736fb3d804_400x.jpg?v=1766368364')"></div>
+                <div class="product-info">
+                    <div class="product-vendor">Everything Old Antiques & Vintage</div>
+                    <div class="product-title">Parker Hale Model 1861 Enfield Musketoon : 58 CAL</div>
+                    <div class="product-price">$1,750.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/5364676ab201388e2736da120d0a77ea_400x.jpg?v=1766363665')"></div>
+                <div class="product-info">
+                    <div class="product-vendor">Everything Old Antiques & Vintage</div>
+                    <div class="product-title">Lee Enfield No.4 Mk.1 T Bolt Action Sniper Rifle : 303 BR</div>
+                    <div class="product-price">$7,650.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-section">
+        <div class="banner-content">
+            <p>Located in Brentwood Bay, British Columbia, Everything Old offers affordable, interesting and unique antique & vintage items for home and commercial decoration.</p>
+        </div>
+    </section>
+
+    <section class="featured-promo">
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="promo-image" style="background-image: url('https://everythingold.ca/cdn/shop/products/89c25806b41511cbe1d7521f52c3ea7c_800x.jpg?v=1703452116')"></div>
+                <div class="promo-overlay">
+                    <h3>NEW ARRIVALS</h3>
+                    <p>Vintage Knives</p>
+                </div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/1f09342142931ed29e3c85e2c1a33337_800x.jpg?v=1766517954')"></div>
+                <div class="promo-overlay">
+                    <h3>ANTIQUE ARMS</h3>
+                    <p>For the Serious Collector!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="categories-container">
+            <div class="section-header">
+                <h2>Featured Categories</h2>
+            </div>
+            <div class="category-grid">
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/collections/254d982d1423750c03e84e164c14e8cc_400x.jpg?v=1717507112')"></div>
+                    <div class="category-name">Arms</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/collections/9ac5c94e485f54a55d55a941e4d170a9_9f42cd41-1553-4b42-a178-95947ec5e25f_400x.jpg?v=1717507376')"></div>
+                    <div class="category-name">Art & Music</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/collections/Everything-Old-Lighters-6175_400x.jpg?v=1717507522')"></div>
+                    <div class="category-name">Collectables</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/9339e1326c3c45bb133d2cca9e91dbff_400x.jpg?v=1716666646')"></div>
+                    <div class="category-name">Kitchen Utensils & Tools</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/collections/bottles-bg_400x.jpg?v=1717507720')"></div>
+                    <div class="category-name">Kitchenware</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/products/aa882469de8b3ae1f5427d1e4bbc25dd_400x.jpg?v=1702846582')"></div>
+                    <div class="category-name">Ordnance</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/531a11b26dc90a2ede70eeeb02de3be1_400x.jpg?v=1716072182')"></div>
+                    <div class="category-name">Pottery & China</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image" style="background-image: url('https://everythingold.ca/cdn/shop/collections/EverythingOld-1-159289-2_400x.jpg?v=1717508085')"></div>
+                    <div class="category-name">Sculpture, Carvings & Castings</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-header">
+            <h2>Do you have old things? Do you not want to have those things any more? We buy and consign!</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/item-request_400x.jpg?v=1629919927')"></div>
+                <h3>Item Request</h3>
+                <p>Let us know if there's something you're looking for!</p>
+                <a href="#" class="btn">Item Request</a>
+            </div>
+            <div class="info-card">
+                <div class="info-card-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/community_400x.jpg?v=1629919944')"></div>
+                <h3>Community-Minded</h3>
+                <p>Take a look at some of the ways we support our local community.</p>
+                <a href="#" class="btn">Community</a>
+            </div>
+            <div class="info-card">
+                <div class="info-card-image" style="background-image: url('https://everythingold.ca/cdn/shop/files/film_400x.jpg?v=1629919919')"></div>
+                <h3>Film & Production</h3>
+                <p>We offer rentals to the film industry, photographers and more!</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>7120 West Saanich Rd<br>Brentwood Bay,<br>British Columbia, Canada</p>
+            </div>
+            <div class="footer-section">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><a href="mailto:artandantique.sca@gmail.com">artandantique.sca@gmail.com</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">▶️</a>
+                    <a href="#">📌</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">Selling & Consigning</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Sitemap</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#request">Item Request</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Everything Old Antiques & Vintage | Privacy Policy | Shipping Policy</p>
+        </div>
+    </footer>
+</body>
+</html>
